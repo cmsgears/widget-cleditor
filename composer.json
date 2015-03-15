@@ -1,0 +1,31 @@
+{
+	"name": "cmsgears/widget-cleditor",
+	"description": "The CLEditor widget for CMSGears developed by cmsgears team.",
+	"homepage": "http://www.cmsgears.org", 
+	"type": "package",
+	"keywords": [ "yii2", "cmsgears", "widget", "cleditor" ],
+	"license": "GPLv2",
+	"authors": [
+		{
+			"name": "Bhagwat Singh Chouhan",
+			"email": "bhagwat.chouhan@vulpinecode.com",
+			"homepage": "http://www.cmsgears.org/",
+			"role": "Founder and project lead."
+		}
+	],
+	"support": {
+        "source": "http://www.cmsgears.org/downloads/modules/core",
+		"forum": "http://forum.cmsgears.org/",
+		"resources": "http://resources.cmsgears.org/",
+		"issues": "https://www.amazingdesk.com/cmsgears/issues/",
+		"blog": "http://cmsgears.tutorials24x7.com/"
+	},
+	"autoload": {
+		"psr-4": {
+			"cmsgears\\cleditor\\": ""
+		}
+	},
+    "require": {
+        "cmsgears/module-core": "*"
+    }
+}

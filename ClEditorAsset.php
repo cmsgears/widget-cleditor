@@ -15,7 +15,7 @@ class ClEditorAsset extends AssetBundle {
 
 		// Path Configuration
 
-	    $this->sourcePath = dirname( __DIR__ ) . '/resources';
+	    $this->sourcePath = '@cmsgears/widget-cleditor/resources';
 
 		// Load CSS
  

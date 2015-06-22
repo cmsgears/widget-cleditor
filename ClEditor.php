@@ -1,11 +1,8 @@
 <?php
 namespace cmsgears\cleditor;
 
-use \Yii;
-use yii\base\Application;
 use yii\web\View;
 use yii\base\Widget;
-use yii\base\InvalidConfigException;
 
 class ClEditor extends Widget {
 
@@ -13,6 +10,9 @@ class ClEditor extends Widget {
 
 	// Public Variables --------------------
 
+	/**
+	 * The css selector to be passed to the editor js library.
+	 */
 	public $selector;
 
 	// Constructor and Initialisation ------------------------------
@@ -22,6 +22,8 @@ class ClEditor extends Widget {
     public function init() {
 
         parent::init();
+		
+		// Do init tasks
     }
 
 	// Instance Methods --------------------------------------------
@@ -31,11 +33,12 @@ class ClEditor extends Widget {
     public function run() {
 
 		// Register resources
-		ClEditorAsset::register( $this->getView() );
+		ClEditorAssetBundle::register( $this->getView() );
 
 		// Add JS
 		$editorJs	= "jQuery( '$this->selector' ).cleditor( { docType: '<!DOCTYPE html>' } );";
 
+		// Call JS at end
 		$this->getView()->registerJs( $editorJs, View::POS_READY );
     }
 }

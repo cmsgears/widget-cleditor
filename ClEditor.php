@@ -1,5 +1,5 @@
 <?php
-namespace cmsgears\cleditor;
+namespace cmsgears\widgets\cleditor;
 
 use yii\web\View;
 use yii\base\Widget;

@@ -1,10 +1,13 @@
 <?php
-namespace cmsgears\cleditor;
+namespace cmsgears\widgets\cleditor;
 
 // Yii Imports
 use yii\web\AssetBundle;
 use yii\web\View;
 
+/**
+ * The cleditor widget bundle for cmsgears. It needs jQuery.
+ */
 class ClEditorAssetBundle extends AssetBundle {
 
 	// Public variables --------------------------------------------
@@ -28,11 +31,6 @@ class ClEditorAssetBundle extends AssetBundle {
 	// Define the Position to load Assets
     public $jsOptions = [
         'position' => View::POS_END
-    ];
-
-	// Define dependent Asset Loaders
-    public $depends = [
-		'yii\web\JqueryAsset'
     ];
 
 	// Constructor and Initialisation ------------------------------

@@ -19,13 +19,13 @@ class ClEditorAssetBundle extends AssetBundle {
 	// Load CSS
 
 	public $css     = [
-		'jquery.cleditor.css',
+		'styles/jquery.cleditor.css',
     ];
 
 	// Load Javascript
 
     public $js      = [
-		'jquery.cleditor.min.js'
+		'scripts/jquery.cleditor.min.js'
     ];
 
 	// Define the Position to load Assets

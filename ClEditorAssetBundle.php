@@ -33,6 +33,11 @@ class ClEditorAssetBundle extends AssetBundle {
         'position' => View::POS_END
     ];
 
+	// Define dependent Asset Loaders
+    public $depends = [
+		'yii\web\JqueryAsset'
+    ];
+
 	// Constructor and Initialisation ------------------------------
 
 	public function __construct() {

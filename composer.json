@@ -1,6 +1,6 @@
 {
 	"name": "cmsgears/widget-cleditor",
-	"description": "The CLEditor widget for CMSGears.",
+	"description": "The CLEditor Widget provide a wrapper for CLEditor WYSIWYG HTML editor for CMSGears projects.",
 	"homepage": "http://www.cmsgears.org", 
 	"type": "package",
 	"keywords": [ "yii2", "cmsgears", "widget", "cleditor" ],

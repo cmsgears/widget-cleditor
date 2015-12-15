@@ -1,8 +1,12 @@
 <?php
 namespace cmsgears\widgets\cleditor;
 
+// Yii Imports
 use yii\web\View;
 use yii\base\Widget;
+
+// CMG Imports
+use cmsgears\widgets\cleditor\assets\ClEditorAssetBundle;
 
 class ClEditor extends Widget {
 

@@ -1,5 +1,5 @@
 <?php
-namespace cmsgears\widgets\cleditor;
+namespace cmsgears\widgets\cleditor\assets;
 
 // Yii Imports
 use yii\web\AssetBundle;

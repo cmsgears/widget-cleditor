@@ -6,7 +6,7 @@ use yii\web\View;
 use yii\base\Widget;
 
 // CMG Imports
-use cmsgears\widgets\cleditor\assets\ClEditorAssetBundle;
+use cmsgears\widgets\cleditor\assets\ClEditorAssets;
 
 class ClEditor extends Widget {
 
@@ -37,7 +37,7 @@ class ClEditor extends Widget {
     public function run() {
 
 		// Register resources
-		ClEditorAssetBundle::register( $this->getView() );
+		ClEditorAssets::register( $this->getView() );
 
 		// Add JS
 		$editorJs	= "jQuery( '$this->selector' ).cleditor( { docType: '<!DOCTYPE html>' } );";

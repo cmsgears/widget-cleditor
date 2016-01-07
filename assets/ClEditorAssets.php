@@ -8,7 +8,7 @@ use yii\web\View;
 /**
  * The cleditor widget bundle for cmsgears. It needs jQuery.
  */
-class ClEditorAssetBundle extends AssetBundle {
+class ClEditorAssets extends AssetBundle {
 
 	// Public variables --------------------------------------------
 

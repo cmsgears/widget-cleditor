@@ -45,5 +45,3 @@ class ClEditorAssets extends AssetBundle {
 		parent::__construct();
 	}
 }
-
-?>

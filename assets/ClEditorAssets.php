@@ -10,20 +10,29 @@ use yii\web\View;
  */
 class ClEditorAssets extends AssetBundle {
 
-	// Public variables --------------------------------------------
+	// Variables ---------------------------------------------------
+
+	// Globals -------------------------------
+
+	// Constants --------------
+
+	// Public -----------------
+
+	// Protected --------------
+
+	// Variables -----------------------------
+
+	// Public -----------------
 
 	// Path Configuration
-
     public $sourcePath = '@cmsgears/widget-cleditor/resources';
 
 	// Load CSS
-
 	public $css     = [
 		'styles/jquery.cleditor.css',
     ];
 
 	// Load Javascript
-
     public $js      = [
 		'scripts/jquery.cleditor.min.js'
     ];
@@ -35,13 +44,27 @@ class ClEditorAssets extends AssetBundle {
 
 	// Define dependent Asset Loaders
     public $depends = [
-		'yii\web\JqueryAsset'
+		'cmsgears\core\common\assets\Jquery'
     ];
+
+	// Protected --------------
+
+	// Private ----------------
+
+	// Traits ------------------------------------------------------
 
 	// Constructor and Initialisation ------------------------------
 
-	public function __construct() {
+	// Instance methods --------------------------------------------
 
-		parent::__construct();
-	}
+	// Yii interfaces ------------------------
+
+	// Yii parent classes --------------------
+
+	// CMG interfaces ------------------------
+
+	// CMG parent classes --------------------
+
+	// ClEditorAssets ------------------------
+
 }

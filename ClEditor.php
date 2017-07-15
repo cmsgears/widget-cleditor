@@ -50,6 +50,12 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 		$config		= $this->config;
 		$controls	= isset( $config[ 'controls' ] ) ? $config[ 'controls' ] : 'all';
 
+		// Fonts
+		if( !isset( $config[ 'fonts' ] ) ) {
+
+			$config[ 'fonts' ] = 'Arial,Arial Black,Courier New,Sans Serif';
+		}
+
 		// Control aliases
 		switch( $controls ) {
 

@@ -67,7 +67,7 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 			}
 			case 'mini': {
 
-				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | source';
+				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule source';
 
 				break;
 			}

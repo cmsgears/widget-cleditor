@@ -18,6 +18,8 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 	 */
 	public $selector;
 
+	public $config = [];
+
 	// Constructor and Initialisation ------------------------------
 
 	// yii\base\Object
@@ -25,7 +27,7 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
     public function init() {
 
         parent::init();
-		
+
 		// Do init tasks
     }
 
@@ -45,12 +47,54 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 
 	public function renderWidget( $config = [] ) {
 
+		$config		= $this->config;
+		$controls	= isset( $config[ 'controls' ] ) ? $config[ 'controls' ] : 'all';
+
+		// Fonts
+		if( !isset( $config[ 'fonts' ] ) ) {
+
+			$config[ 'fonts' ] = 'Arial,Arial Black,Courier New,Sans Serif';
+		}
+
+		// Control aliases
+		switch( $controls ) {
+
+			case 'all': {
+
+				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source';
+
+				break;
+			}
+			case 'mini': {
+
+				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule source';
+
+				break;
+			}
+		}
+
+		$config[ 'controls' ]	= $controls;
+
+		$configJson				= "{ docType: '<!DOCTYPE html>'";
+
+		foreach ( $config as $key => $value ) {
+
+			if( is_string( $value ) ) {
+
+				$configJson .= ", $key: '$value'";
+			}
+			else {
+
+				$configJson .= ", $key: $value";
+			}
+		}
+
+		$configJson .= "}";
+
 		// Add JS
-		$editorJs	= "jQuery( '$this->selector' ).cleditor( { docType: '<!DOCTYPE html>' } );";
+		$editorJs	= "jQuery( '$this->selector' ).cleditor( $configJson );";
 
 		// Call JS at end
 		$this->getView()->registerJs( $editorJs, View::POS_READY );
 	}
 }
-
-?>

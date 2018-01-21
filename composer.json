@@ -1,12 +1,12 @@
 {
 	"name": "cmsgears/widget-cleditor",
 	"description": "The CLEditor Widget provide a wrapper for CLEditor WYSIWYG HTML editor for CMSGears projects.",
-	"homepage": "http://www.cmsgears.org", 
+	"homepage": "https://www.cmsgears.org",
 	"type": "package",
 	"keywords": [ "yii2", "cmsgears", "widget", "cleditor" ],
-	"license": "GPLv3",
+	"license": "GPL-2.0-or-later",
 	"support": {
-		"resources": "http://www.cmsgears.org"
+		"resources": "https://www.cmsgears.org"
 	},
 	"autoload": {
 		"psr-4": {

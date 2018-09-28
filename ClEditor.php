@@ -59,11 +59,14 @@ class ClEditor extends Widget {
 
 		$config		= $this->config;
 		$controls	= isset( $config[ 'controls' ] ) ? $config[ 'controls' ] : 'all';
+		$font		= 'font';
 
 		// Fonts
 		if( !isset( $config[ 'fonts' ] ) ) {
 
-			$config[ 'fonts' ] = 'Arial,Arial Black,Courier New,Sans Serif';
+			$font = null;
+
+			$config[ 'fonts' ] = null;
 		}
 
 		// Control aliases
@@ -71,23 +74,23 @@ class ClEditor extends Widget {
 
 			case 'all': {
 
-				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source';
+				$controls = "bold italic underline strikethrough subscript superscript | $font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source";
 
 				break;
 			}
 			case 'mini': {
 
-				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule link unlink | source';
+				$controls = "bold italic underline strikethrough subscript superscript | $font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule link unlink | source";
 
 				break;
 			}
 		}
 
-		$config[ 'controls' ]	= $controls;
+		$config[ 'controls' ] = $controls;
 
-		$configJson				= "{ docType: '<!DOCTYPE html>'";
+		$configJson = "{ docType: '<!DOCTYPE html>'";
 
-		foreach ( $config as $key => $value ) {
+		foreach( $config as $key => $value ) {
 
 			if( is_string( $value ) ) {
 
@@ -107,4 +110,5 @@ class ClEditor extends Widget {
 		// Call JS at end
 		$this->getView()->registerJs( $editorJs, View::POS_READY );
 	}
+
 }

@@ -66,7 +66,7 @@ class ClEditor extends Widget {
 
 			$font = null;
 
-			$config[ 'fonts' ] = null;
+			unset($config[ 'fonts' ]);
 		}
 
 		// Control aliases

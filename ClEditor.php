@@ -32,15 +32,6 @@ class ClEditor extends Widget {
 
 	// Constructor and Initialisation ------------------------------
 
-	// yii\base\Object
-
-    public function init() {
-
-        parent::init();
-
-		// Do init tasks
-    }
-
 	// Instance Methods --------------------------------------------
 
 	// yii\base\Widget
@@ -57,16 +48,18 @@ class ClEditor extends Widget {
 
 	public function renderWidget( $config = [] ) {
 
-		$config		= $this->config;
-		$controls	= isset( $config[ 'controls' ] ) ? $config[ 'controls' ] : 'all';
-		$font		= 'font';
+		$editorConfig = $this->config;
+
+		$controls = isset( $editorConfig[ 'controls' ] ) ? $editorConfig[ 'controls' ] : 'all';
+
+		$font = 'font';
 
 		// Fonts
-		if( !isset( $config[ 'fonts' ] ) ) {
+		if( !isset( $editorConfig[ 'fonts' ] ) ) {
 
 			$font = null;
 
-			unset($config[ 'fonts' ]);
+			unset( $config[ 'fonts' ] );
 		}
 
 		// Control aliases
@@ -86,26 +79,14 @@ class ClEditor extends Widget {
 			}
 		}
 
-		$config[ 'controls' ] = $controls;
+		$editorConfig[ 'controls' ] = $controls;
 
-		$configJson = "{ docType: '<!DOCTYPE html>'";
+		$editorConfig[ 'docType' ] = '<!DOCTYPE html>';
 
-		foreach( $config as $key => $value ) {
-
-			if( is_string( $value ) ) {
-
-				$configJson .= ", $key: '$value'";
-			}
-			else {
-
-				$configJson .= ", $key: $value";
-			}
-		}
-
-		$configJson .= "}";
+		$editorConfigJson = json_encode( $editorConfig );
 
 		// Add JS
-		$editorJs	= "jQuery( '$this->selector' ).cleditor( $configJson );";
+		$editorJs = "jQuery( '$this->selector' ).cleditor( $editorConfigJson );";
 
 		// Call JS at end
 		$this->getView()->registerJs( $editorJs, View::POS_READY );

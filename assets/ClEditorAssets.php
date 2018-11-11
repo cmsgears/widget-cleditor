@@ -36,12 +36,12 @@ class ClEditorAssets extends AssetBundle {
     public $sourcePath = '@cmsgears/widget-cleditor/resources';
 
 	// Load CSS
-	public $css     = [
+	public $css = [
 		'styles/jquery.cleditor.css',
     ];
 
 	// Load Javascript
-    public $js      = [
+    public $js = [
 		'scripts/jquery.cleditor.min.js'
     ];
 

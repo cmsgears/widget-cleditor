@@ -30,6 +30,13 @@ class ClEditor extends Widget {
 
 	public $config = [];
 
+	public $docType = '<!DOCTYPE html>';
+
+	// all controls -> bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source
+	public $controls = 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule link unlink | source';
+
+	public $fonts = null;
+
 	// Constructor and Initialisation ------------------------------
 
 	// Instance Methods --------------------------------------------
@@ -50,38 +57,16 @@ class ClEditor extends Widget {
 
 		$editorConfig = $this->config;
 
-		$controls = isset( $editorConfig[ 'controls' ] ) ? $editorConfig[ 'controls' ] : 'all';
+		$editorConfig[ 'docType' ]	= isset( $editorConfig[ 'docType' ] ) ? $editorConfig[ 'docType' ] : $this->docType;
 
-		$font = 'font';
+		$editorConfig[ 'controls' ] = isset( $editorConfig[ 'controls' ] ) ? $editorConfig[ 'controls' ] : $this->controls;
 
-		// Fonts
-		if( !isset( $editorConfig[ 'fonts' ] ) ) {
+		$editorConfig[ 'fonts' ]	= isset( $editorConfig[ 'fonts' ] ) ? $editorConfig[ 'fonts' ] : $this->fonts;
 
-			$font = null;
+		if( empty( $editorConfig[ 'fonts' ] ) ) {
 
-			unset( $config[ 'fonts' ] );
+			unset( $editorConfig[ 'fonts' ] );
 		}
-
-		// Control aliases
-		switch( $controls ) {
-
-			case 'all': {
-
-				$controls = "bold italic underline strikethrough subscript superscript | $font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source";
-
-				break;
-			}
-			case 'mini': {
-
-				$controls = "bold italic underline strikethrough subscript superscript | $font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule link unlink | source";
-
-				break;
-			}
-		}
-
-		$editorConfig[ 'controls' ] = $controls;
-
-		$editorConfig[ 'docType' ] = '<!DOCTYPE html>';
 
 		$editorConfigJson = json_encode( $editorConfig );
 

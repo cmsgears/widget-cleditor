@@ -1,13 +1,23 @@
 <?php
+/**
+ * This file is part of CMSGears Framework. Please view License file distributed
+ * with the source code for license details.
+ *
+ * @link https://www.cmsgears.org/
+ * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
+ */
+
 namespace cmsgears\widgets\cleditor;
 
 // Yii Imports
 use yii\web\View;
 
 // CMG Imports
+use cmsgears\core\common\base\Widget;
+
 use cmsgears\widgets\cleditor\assets\ClEditorAssets;
 
-class ClEditor extends \cmsgears\core\common\base\Widget {
+class ClEditor extends Widget {
 
 	// Variables ---------------------------------------------------
 
@@ -20,16 +30,14 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 
 	public $config = [];
 
+	public $docType = '<!DOCTYPE html>';
+
+	// all controls -> bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source
+	public $controls = 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule link unlink | source';
+
+	public $fonts = null;
+
 	// Constructor and Initialisation ------------------------------
-
-	// yii\base\Object
-
-    public function init() {
-
-        parent::init();
-
-		// Do init tasks
-    }
 
 	// Instance Methods --------------------------------------------
 
@@ -47,54 +55,26 @@ class ClEditor extends \cmsgears\core\common\base\Widget {
 
 	public function renderWidget( $config = [] ) {
 
-		$config		= $this->config;
-		$controls	= isset( $config[ 'controls' ] ) ? $config[ 'controls' ] : 'all';
+		$editorConfig = $this->config;
 
-		// Fonts
-		if( !isset( $config[ 'fonts' ] ) ) {
+		$editorConfig[ 'docType' ]	= isset( $editorConfig[ 'docType' ] ) ? $editorConfig[ 'docType' ] : $this->docType;
 
-			$config[ 'fonts' ] = 'Arial,Arial Black,Courier New,Sans Serif';
+		$editorConfig[ 'controls' ] = isset( $editorConfig[ 'controls' ] ) ? $editorConfig[ 'controls' ] : $this->controls;
+
+		$editorConfig[ 'fonts' ]	= isset( $editorConfig[ 'fonts' ] ) ? $editorConfig[ 'fonts' ] : $this->fonts;
+
+		if( empty( $editorConfig[ 'fonts' ] ) ) {
+
+			unset( $editorConfig[ 'fonts' ] );
 		}
 
-		// Control aliases
-		switch( $controls ) {
-
-			case 'all': {
-
-				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source';
-
-				break;
-			}
-			case 'mini': {
-
-				$controls	= 'bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule source';
-
-				break;
-			}
-		}
-
-		$config[ 'controls' ]	= $controls;
-
-		$configJson				= "{ docType: '<!DOCTYPE html>'";
-
-		foreach ( $config as $key => $value ) {
-
-			if( is_string( $value ) ) {
-
-				$configJson .= ", $key: '$value'";
-			}
-			else {
-
-				$configJson .= ", $key: $value";
-			}
-		}
-
-		$configJson .= "}";
+		$editorConfigJson = json_encode( $editorConfig );
 
 		// Add JS
-		$editorJs	= "jQuery( '$this->selector' ).cleditor( $configJson );";
+		$editorJs = "jQuery( '$this->selector' ).cleditor( $editorConfigJson );";
 
 		// Call JS at end
 		$this->getView()->registerJs( $editorJs, View::POS_READY );
 	}
+
 }
